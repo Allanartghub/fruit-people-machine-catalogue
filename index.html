@@ -25,6 +25,7 @@ section{padding:70px 0}.section-head{display:flex;justify-content:space-between;
 .routes{background:var(--pink)}.routes h2,.routes .section-head p{color:#fff}.route-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.route-card{background:#fff;border-radius:18px;padding:22px;cursor:pointer;border:3px solid transparent}.route-card.selected{border-color:#111}.route-card .price{font-size:26px;font-weight:900;margin:10px 0}.route-card ul{padding-left:18px;line-height:1.7;color:#555}
 .summary{background:#fff}.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.customer-setup{border:2px solid #111;border-radius:20px;padding:24px}.setup-lines{display:grid;gap:10px;margin:20px 0}.setup-line{display:flex;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line);padding-bottom:8px}.setup-actions{display:flex;gap:8px;flex-wrap:wrap}.handoff{background:#f3efe6;border-radius:20px;padding:24px}.field{margin-bottom:13px}.field label{display:block;font-size:12px;font-weight:900;margin-bottom:6px}.field input,.field textarea{width:100%;border:1px solid #aaa;border-radius:10px;padding:11px;font:inherit}.field textarea{min-height:90px;resize:vertical}
 .proposal{background:var(--yellow)}.proposal-sheet{background:#fff;border-radius:22px;padding:34px;box-shadow:0 12px 35px rgba(0,0,0,.08)}.proposal-brand{display:flex;justify-content:space-between;gap:20px;align-items:center;border-bottom:2px solid #111;padding-bottom:18px;margin-bottom:25px}.proposal-brand img{height:42px;max-width:180px}.proposal-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px}.proposal-machine{background:#f7f4ed;border-radius:18px;padding:20px}.proposal-machine img{height:220px;width:100%;object-fit:contain}.proposal-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.fact{border:1px solid var(--line);border-radius:12px;padding:12px}.fact span{display:block;font-size:10px;text-transform:uppercase;font-weight:900;color:#777;margin-bottom:4px}.proposal-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.setup-toast{position:fixed;right:22px;bottom:22px;z-index:100;background:#111;color:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 12px 34px rgba(0,0,0,.24);max-width:min(390px,calc(100vw - 36px));opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .2s ease,transform .2s ease}.setup-toast.show{opacity:1;transform:translateY(0)}.setup-toast strong{display:block;font-size:13px}.setup-toast span{display:block;font-size:11px;opacity:.75;margin-top:3px}
 footer{background:#111;color:#fff;padding:28px 0}.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-row img{height:32px;background:#fff;padding:4px 8px;border-radius:7px}.mobile-sticky{display:none}
 @media(max-width:800px){.hero-grid,.finder-grid,.summary-grid,.proposal-grid{grid-template-columns:1fr}.product-row{grid-template-columns:repeat(2,1fr)}.route-grid{grid-template-columns:1fr}.compare-slots{grid-template-columns:1fr}}
 @media(max-width:640px){
@@ -32,6 +33,7 @@ footer{background:#111;color:#fff;padding:28px 0}.footer-row{display:flex;justif
  section{padding:48px 0}.section-head{display:block;margin-bottom:22px}.section-head p{font-size:14px}.finder-grid{gap:12px}.panel{padding:18px}.slider-number{font-size:54px}.choice-grid.three{grid-template-columns:1fr 1fr}.recommendations{grid-template-columns:1fr}.tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}.tab{white-space:nowrap}
  .product-row{display:flex;overflow-x:auto;gap:12px;scroll-snap-type:x mandatory;margin-right:-18px;padding-right:18px;padding-bottom:12px}.product-card{flex:0 0 78vw;scroll-snap-align:start}.product-img{height:205px;padding:24px 20px}.product-img img{width:84%!important;height:84%!important;max-width:84%!important;max-height:84%!important;transform:scale(.90)!important}.product-body{padding:15px}.product-title{font-size:17px}.specs{font-size:12px}.product-actions{grid-template-columns:1fr}
  .compare-slots{grid-template-columns:1fr}.route-card{padding:18px}.summary-grid{grid-template-columns:1fr}.setup-actions,.proposal-actions{display:grid;grid-template-columns:1fr}.proposal-sheet{padding:18px}.proposal-brand{align-items:flex-start}.proposal-brand img{height:34px}.proposal-facts{grid-template-columns:1fr 1fr}.setup-item{grid-template-columns:1fr}.setup-item-actions{justify-content:flex-start}.footer-row{display:block}.footer-row img{margin-bottom:12px}
+ .setup-toast{left:18px;right:18px;bottom:82px;max-width:none}
  .mobile-sticky{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:10px;right:10px;bottom:10px;z-index:40;background:#fff;border:1px solid #ddd;border-radius:999px;padding:5px;box-shadow:0 8px 30px rgba(0,0,0,.18)}.mobile-sticky .btn{min-height:44px;padding:8px;font-size:10px;border:0}
 }
 @media print{.partnerbar,.quicknav,.hero,.finder,.catalogue,.comparison,.routes,.summary,footer,.mobile-sticky,.proposal .section-head,.proposal-actions{display:none!important}.proposal{padding:0;background:#fff}.proposal .container{width:100%;max-width:none}.proposal-sheet{box-shadow:none;border-radius:0;padding:0}}
@@ -82,8 +84,8 @@ footer{background:#111;color:#fff;padding:28px 0}.footer-row{display:flex;justif
 <body>
 <header class="partnerbar"><div class="container"><div class="brandlock"><strong>MOYEE</strong><span>×</span><img src="assets/thefruitpeople logo-b2b.svg" alt="The Fruit People logo"></div><small>Partner machine catalogue</small></div></header>
 <main>
-<section class="hero"><div class="container hero-grid"><div><div class="eyebrow pink">Built for The Fruit People</div><h1>Find the right coffee machine for every customer.</h1><p class="hero-copy">Configure the customer requirement, see suggested machines, browse the full Moyee equipment catalogue and turn the final selection into a customer-ready proposal.</p><div class="hero-actions"><a class="btn pink-btn" href="#finder">Build customer setup</a><a class="btn" href="#catalogue">Browse catalogue</a><a class="btn" href="#proposal">Proposal preview</a></div></div><div class="hero-visual"><img src="assets/hero-b2b.png" alt="Commercial coffee machine"></div></div></section>
-<nav class="quicknav"><div class="container"><a href="#finder">Configurator</a><a href="#catalogue">Catalogue</a><a href="#compare">Compare</a><a href="#routes">Buy / Lease / Managed</a><a href="#setup">Customer setup</a><a href="#proposal">Proposal</a></div></nav>
+<section class="hero"><div class="container hero-grid"><div><div class="eyebrow pink">Built for The Fruit People</div><h1>Find the right coffee machine for every customer.</h1><p class="hero-copy">Configure the client requirement, see suggested machines, browse the full Moyee equipment catalogue and save the final selection as an internal client setup.</p><div class="hero-actions"><a class="btn pink-btn" href="#finder">Build customer setup</a><a class="btn" href="#catalogue">Browse catalogue</a><a class="btn" href="#proposal">Internal proposal</a></div></div><div class="hero-visual"><img src="assets/hero-b2b.png" alt="Commercial coffee machine"></div></div></section>
+<nav class="quicknav"><div class="container"><a href="#finder">Configurator</a><a href="#catalogue">Catalogue</a><a href="#compare">Compare</a><a href="#routes">Buy / Lease / Managed</a><a href="#proposal">Internal proposal</a></div></nav>
 
 <section class="finder" id="finder"><div class="container"><div class="section-head"><div><div class="eyebrow">Customer configurator</div><h2>Start with the customer, not the machine.</h2></div><p>Set the workplace size, service style, main priority and commercial route. The catalogue remains fully browsable; recommendations simply highlight the strongest starting points.</p></div>
 <div class="finder-grid">
@@ -93,10 +95,10 @@ footer{background:#111;color:#fff;padding:28px 0}.footer-row{display:flex;justif
  <div class="question"><div class="question-title">Main priority</div><div class="choice-grid"><button class="choice active" data-choice="priority" data-value="Ease of use">Ease of use</button><button class="choice" data-choice="priority" data-value="High volume">High volume</button><button class="choice" data-choice="priority" data-value="Premium experience">Premium experience</button><button class="choice" data-choice="priority" data-value="Compact footprint">Compact footprint</button></div></div>
  <div class="question"><div class="question-title">Commercial route</div><div class="choice-grid three"><button class="choice active" data-choice="route" data-value="Buy">Buy</button><button class="choice" data-choice="route" data-value="Lease">Lease</button><button class="choice" data-choice="route" data-value="Managed">Managed</button></div></div>
 </div>
-<div class="panel"><div class="result-top"><div><div class="eyebrow pink">Customer match</div><h3 id="resultTitle">Medium-volume automatic setup</h3></div><span class="result-badge" id="resultBadge">120 people</span></div><div class="brief-pills" id="briefPills"></div><p id="resultCopy"></p><div class="recommendations" id="recommendations"></div><button class="btn pink-btn" type="button" onclick="viewMatchingMachines()">View all matching machines</button></div>
+<div class="panel"><div class="result-top"><div><div class="eyebrow pink">Customer match</div><h3 id="resultTitle">Medium-volume self-service setup</h3></div><span class="result-badge" id="resultBadge">120 people</span></div><div class="brief-pills" id="briefPills"></div><p id="resultCopy"></p><div class="recommendations" id="recommendations"></div><button class="btn pink-btn" type="button" onclick="viewMatchingMachines()">View all matching machines</button></div>
 </div></div></section>
 
-<section class="catalogue" id="catalogue"><div class="container"><div class="section-head"><div><div class="eyebrow pink">Interactive catalogue</div><h2>Browse the whole machine range.</h2></div><p>Recommendations are highlighted as customer matches, but The Fruit People can still browse every machine, compare alternatives and choose the final setup.</p></div><div class="tabs"><button class="tab active" data-filter="all">All machines</button><button class="tab" data-filter="automatic">Super automatic</button><button class="tab" data-filter="espresso">Traditional espresso</button><button class="tab" data-filter="grinder">Grinders</button></div><div id="catalogueGroups"></div></div></section>
+<section class="catalogue" id="catalogue"><div class="container"><div class="section-head"><div><div class="eyebrow pink">Interactive catalogue</div><h2>Browse the whole machine range.</h2></div><p>Client setups are highlighted as customer matches, but The Fruit People can still browse every machine, compare alternatives and choose the final setup.</p></div><div class="tabs"><button class="tab active" data-filter="all">All machines</button><button class="tab" data-filter="bean">Office bean-to-cup</button><button class="tab" data-filter="automatic">Super automatic</button><button class="tab" data-filter="espresso">Traditional espresso</button><button class="tab" data-filter="grinder">Grinders</button></div><div id="catalogueGroups"></div></div></section>
 
 <section class="comparison" id="compare"><div class="container"><div class="section-head"><div><div class="eyebrow pink">Live comparison</div><h2>Compare up to three options.</h2></div><p>Use this as a side-by-side shortlist. The final customer setup can contain any number and mix of machines, grinders and workflow items.</p></div><div class="compare-box"><div class="compare-slots" id="compareSlots"></div></div></div></section>
 
@@ -106,50 +108,200 @@ footer{background:#111;color:#fff;padding:28px 0}.footer-row{display:flex;justif
 <article class="route-card" data-route-card="Managed"><div class="eyebrow pink">Managed</div><h3>One supported setup</h3><div class="price">Tailored</div><p>For larger or more complex environments requiring a supported equipment solution.</p><ul><li>Equipment configuration</li><li>Service and support</li><li>Multi-machine setups possible</li></ul><button class="btn" data-route-choice="Managed">Choose managed</button></article>
 </div></div></section>
 
-<section class="summary" id="setup"><div class="container"><div class="section-head"><div><div class="eyebrow pink">Customer setup</div><h2>Your customer setup, ready to use.</h2></div></div><div class="summary-grid">
-<div class="customer-setup"><h3>Current customer setup</h3><div class="setup-lines"><div class="setup-line"><span>Workplace</span><strong id="summaryPeople">120 people</strong></div><div class="setup-line"><span>Service</span><strong id="summaryService">Push-button</strong></div><div class="setup-line"><span>Priority</span><strong id="summaryPriority">Ease of use</strong></div><div class="setup-line"><span>Route</span><strong id="summaryRoute">Buy</strong></div><div class="setup-line"><span>Compared</span><strong id="summaryCompared">None yet</strong></div></div><div class="eyebrow pink">Equipment in setup</div><div class="setup-list" id="setupList"><div class="setup-item"><span>No equipment selected yet.</span></div></div><div class="setup-total"><span>Known equipment subtotal</span><strong id="setupTotal">€0</strong></div><div class="price-note">Indicative catalogue subtotal only. Items marked “Quote required” are excluded; final partner pricing, VAT treatment, installation and commercial terms must be confirmed.</div><div class="setup-actions"><button class="btn" onclick="copySetup()">Copy customer setup</button><a class="btn yellow-btn" href="#proposal">Create proposal</a></div></div>
-<div class="handoff"><div class="eyebrow pink">Optional Moyee handoff</div><h3>Send only when the opportunity is ready.</h3><div class="field"><label>Customer / company</label><input id="customerName" placeholder="e.g. Acme Ireland"></div><div class="field"><label>The Fruit People contact</label><input id="salesperson" placeholder="Name"></div><div class="field"><label>Notes</label><textarea id="notes" placeholder="Anything Moyee should know about the requirement"></textarea></div><button class="btn pink-btn" onclick="sendToMoyee()">Send setup to Moyee</button>
-</div></div></section>
+<section class="proposal" id="proposal">
+  <div class="container">
 
-<section class="proposal" id="proposal"><div class="container"><div class="section-head"><div><div class="eyebrow">Customer proposal</div><h2>A client-ready recommendation.</h2></div><p>Co-branded for The Fruit People × Moyee. Pricing is intentionally excluded until the commercial rules for customer-facing pricing are confirmed.</p></div>
-<div class="proposal-sheet" id="proposalSheet">
- <div class="proposal-brand"><div><div class="eyebrow pink">Coffee machine recommendation</div><h3 id="proposalCustomer">Prepared for your workplace</h3></div><img src="assets/thefruitpeople logo-b2b.svg" alt="The Fruit People logo"></div>
- <div class="proposal-grid"><div><div class="eyebrow">Recommended setup</div><h2 id="proposalMachine">Build the equipment setup above</h2><p id="proposalWhy">Configure the customer and add one or more machines to build the recommendation.</p><div class="proposal-facts"><div class="fact"><span>Workplace</span><strong id="proposalPeople">120 people</strong></div><div class="fact"><span>Service</span><strong id="proposalService">Push-button</strong></div><div class="fact"><span>Priority</span><strong id="proposalPriority">Ease of use</strong></div><div class="fact"><span>Commercial route</span><strong id="proposalRoute">Buy</strong></div></div><div class="eyebrow pink" style="margin-top:22px">Equipment configuration</div><div class="setup-list" id="proposalSetupList"><div class="setup-item"><span>No equipment selected yet.</span></div></div><div class="setup-total"><span>Known equipment subtotal</span><strong id="proposalTotal">€0</strong></div><div class="price-note">Quote-required items are excluded from the subtotal. Final pricing and terms to be confirmed.</div></div><div class="proposal-machine"><img id="proposalImage" src="assets/hero-b2b.png" alt="Recommended coffee machine"><div class="eyebrow pink" style="margin-top:12px">Presented by</div><strong>The Fruit People × Moyee</strong><p style="font-size:12px;color:#666;margin-top:8px">Final equipment specification, availability, pricing and commercial terms to be confirmed.</p></div></div>
- <div class="proposal-actions"><button class="btn pink-btn" onclick="window.print()">Print / Save as PDF</button><button class="btn" onclick="copyProposal()">Copy proposal summary</button></div>
-</div></div></section>
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Internal proposal</div>
+        <h2>Your final recommended setup.</h2>
+      </div>
+
+      <p>
+        An internal record for The Fruit People to save against the client opportunity,
+        including the recommended equipment, setup details and pricing.
+      </p>
+    </div>
+
+    <div class="proposal-sheet" id="proposalSheet">
+
+      <div class="proposal-brand">
+        <div>
+          <div class="eyebrow pink">Internal machine recommendation</div>
+          <h3 id="proposalCustomer">Unnamed client — Setup</h3>
+          <div class="field" style="margin-top:14px;max-width:360px">
+            <label for="customerName">Client / opportunity name</label>
+            <input id="customerName" type="text" placeholder="e.g. Client X">
+          </div>
+        </div>
+
+        <img
+          src="assets/thefruitpeople logo-b2b.svg"
+          alt="The Fruit People logo"
+        >
+      </div>
+
+      <div class="proposal-grid">
+
+        <div>
+          <div class="eyebrow">Recommended setup</div>
+
+          <h2 id="proposalMachine">
+            Build the equipment setup above
+          </h2>
+
+          <p id="proposalWhy">
+            Configure the client requirements and add one or more machines
+            to build the recommended setup.
+          </p>
+
+          <div class="proposal-facts">
+
+            <div class="fact">
+              <span>Workplace</span>
+              <strong id="proposalPeople">120 people</strong>
+            </div>
+
+            <div class="fact">
+              <span>Service</span>
+              <strong id="proposalService">Push-button</strong>
+            </div>
+
+            <div class="fact">
+              <span>Priority</span>
+              <strong id="proposalPriority">Ease of use</strong>
+            </div>
+
+            <div class="fact">
+              <span>Commercial route</span>
+              <strong id="proposalRoute">Buy</strong>
+            </div>
+
+          </div>
+
+          <div class="eyebrow pink" style="margin-top:22px">
+            Equipment configuration
+          </div>
+
+          <div class="setup-list" id="proposalSetupList">
+            <div class="setup-item">
+              <span>No equipment selected yet.</span>
+            </div>
+          </div>
+
+          <div class="setup-total">
+            <span>Known equipment subtotal</span>
+            <strong id="proposalTotal">€0</strong>
+          </div>
+
+          <div class="price-note">
+            Subtotal uses displayed VAT-inclusive catalogue prices.
+            “From” prices use the entry price and quote-required items are excluded.
+            Final pricing, availability and commercial terms are subject to confirmation.
+          </div>
+        </div>
+
+        <div class="proposal-machine">
+
+          <img
+            id="proposalImage"
+            src="assets/hero-b2b.png"
+            alt="Recommended coffee machine"
+          >
+
+          <div class="eyebrow pink" style="margin-top:12px">
+            Internal use
+          </div>
+
+          <strong>The Fruit People</strong>
+
+          <p style="font-size:12px;color:#666;margin-top:8px">
+            Internal client setup record. Not intended for external distribution.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="proposal-actions">
+
+        <button
+          class="btn pink-btn"
+          onclick="window.print()"
+        >
+          Print / Save internal proposal
+        </button>
+
+        <button
+          class="btn"
+          onclick="copyProposal()"
+        >
+          Copy setup summary
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
 </main>
 <footer><div class="container footer-row"><img src="assets/thefruitpeople logo-b2b.svg" alt="The Fruit People"><div>Moyee × The Fruit People · Partner machine catalogue prototype</div></div></footer>
-<div class="mobile-sticky"><a class="btn yellow-btn" href="#finder">Configure</a><a class="btn pink-btn" href="#setup">Customer setup</a></div>
+<div class="setup-toast" id="setupToast" role="status" aria-live="polite"></div>
+<div class="mobile-sticky"><a class="btn yellow-btn" href="#finder">Configure</a><a class="btn pink-btn" href="#proposal">View setup</a></div>
 
 <script>
 const machines=[
-{id:'e2ms',name:'Eversys E2MS',cat:'automatic',img:'assets/E2MS-b2b.png',fit:'High-volume automatic',size:'150+ people',note:'Premium super automatic platform for demanding workplace environments.',price:null,priceLabel:'Quote required'},
-{id:'cameo',name:'Eversys Cameo C2ms',cat:'automatic',img:'assets/Eversys Cameo C2ms-b2b.png',fit:'Premium automatic',size:'100+ people',note:'A polished automatic option where experience and throughput both matter.',price:null,priceLabel:'Quote required'},
-{id:'legacy',name:'Eversys Legacy L2m',cat:'automatic',img:'assets/Eversys Legacy L2m-b2b.png',fit:'Automatic',size:'50–150 people',note:'A practical automatic route for growing workplace coffee programmes.',price:null,priceLabel:'Quote required'},
-{id:'maverick',name:'Victoria Arduino Black Eagle Maverick 2 Group',cat:'espresso',img:'assets/Black Eagle Maverick 2gp-b2b.png',fit:'Premium espresso bar',size:'High volume',note:'Flagship traditional espresso platform for premium staffed coffee service.',price:17345,priceLabel:'€17,345 + VAT'},
-{id:'eagle',name:'Victoria Arduino Eagle One 2 Group',cat:'espresso',img:'assets/Eagle One 2gp-b2b.jpg',fit:'Modern espresso bar',size:'Medium–high volume',note:'Contemporary commercial espresso machine for customer-facing coffee bars.',price:11535,priceLabel:'€11,535 + VAT'},
-{id:'aurelia',name:'Nuova Simonelli Aurelia Vol XT 2 Group',cat:'espresso',img:'assets/nuova aurelia Vol 2gp-b2b.jpg',fit:'Reliable espresso bar',size:'Medium–high volume',note:'A strong commercial workhorse for staffed workplace and hospitality setups.',price:7200,priceLabel:'€7,200 + VAT'},
-{id:'appia',name:'Nuova Simonelli Appia Life Compact',cat:'espresso',img:'assets/APPIA LIFE COMPACT-b2b.jpg',fit:'Compact espresso',size:'Smaller footprint',note:'Compact traditional espresso machine where counter space is limited.',price:4300,priceLabel:'€4,300 + VAT'},
-{id:'sanremo',name:'Sanremo D8 2 Group',cat:'espresso',img:'assets/Sanremo D8 2gp-b2b.jpg',fit:'Versatile espresso bar',size:'Medium–high volume',note:'A flexible modern espresso option for workplace and hospitality environments.',price:6950,priceLabel:'€6,950'},
-{id:'linea',name:'La Marzocco Linea Classic 2 Group',cat:'espresso',img:'assets/linea classic 2 group-b2b.jpg',fit:'Classic espresso bar',size:'Medium–high volume',note:'Recognisable commercial platform for a traditional staffed coffee service.',price:10795,priceLabel:'€10,795 + VAT'},
-{id:'my65',name:'Victoria Arduino MY65',cat:'grinder',img:'assets/my65-b2b.jpg',fit:'Commercial grinder',size:'Espresso setups',note:'Commercial grinder for traditional espresso configurations.',price:1950,priceLabel:'€1,950 + VAT'},
-{id:'f64',name:'Fiorenzato F64 EVO',cat:'grinder',img:'assets/Fiorenzato_F64_EVO-b2b.webp',fit:'Commercial grinder',size:'Espresso setups',note:'A practical grinder option for professional espresso service.',price:null,priceLabel:'Quote required'},
-{id:'puq',name:'PuqPress M4',cat:'grinder',img:'assets/PuqPress-M4-Black-Front-View-b2b.webp',fit:'Workflow accessory',size:'Espresso setups',note:'Automated tamping support for consistency and faster bar workflow.',price:790,priceLabel:'€790 + VAT'}
+{id:'jura-w8',name:'Jura W8',cat:'bean',img:'assets/Jura W8-b2b.png',fit:'Small office',size:'5–20 people',note:'Reliable self-service bean-to-cup machine for smaller workplaces.',price:2456,priceLabel:'€2,456 · Including VAT'},
+{id:'jura-x10',name:'Jura X10 Dark Inox',cat:'bean',img:'assets/Jura X10 Dark Inox-b2b.png',fit:'Growing team',size:'20–50 people',note:'Versatile office bean-to-cup machine for growing teams and regular daily use.',price:3358,priceLabel:'€3,358 · Including VAT'},
+{id:'jura-x3c',name:'Jura GIGA X3c',cat:'bean',img:'assets/Jura GIGA X3c-b2b.png',fit:'50+ offices',size:'50–100 people',note:'Higher-capacity bean-to-cup platform for busy self-service workplaces.',price:5908,priceLabel:'€5,908 · Including VAT'},
+{id:'jura-x8c',name:'Jura GIGA X8c',cat:'bean',img:'assets/Jura GIGA X8c-b2b.png',fit:'100+ offices',size:'100+ people',note:'High-output self-service platform for larger workplaces and heavier daily demand.',price:7808,priceLabel:'€7,808 · Including VAT'},
+{id:'legacy',name:"Eversys Legacy L'2m",cat:'automatic',img:'assets/Eversys Legacy L2m-b2b.png',fit:'Flexible menu',size:'Up to 175 drinks/hour',note:'Premium self-service system for workplace environments requiring a broad drinks menu.',price:null,priceLabel:'Quote required'},
+{id:'cameo',name:"Eversys Cameo C'2ms",cat:'automatic',img:'assets/Eversys Cameo C2ms-b2b.png',fit:'Compact premium',size:'Up to 175 drinks/hour',note:'Premium super automatic option for offices and lounges.',price:null,priceLabel:'Quote required'},
+{id:'e2ms',name:"Eversys Enigma E'2ms",cat:'automatic',img:'assets/E2MS-b2b.png',fit:'Premium self-serve',size:'Up to 175 drinks/hour',note:'Premium super automatic platform for hotels, offices and high-volume self-service environments.',price:null,priceLabel:'Quote required'},
+{id:'appia',name:'Nuova Simonelli Appia Life Compact',cat:'espresso',img:'assets/APPIA LIFE COMPACT-b2b.jpg',fit:'Compact hospitality setup',size:'Smaller cafés',note:'Compact professional espresso machine for smaller cafés and coffee bars.',price:6150,priceLabel:'€6,150 · Including VAT'},
+{id:'zoe',name:'Sanremo Zoe Compact Espresso Machine',cat:'espresso',img:'assets/zoecompact-b2b.png',fit:'First café',size:'Small cafés / restaurants',note:'Space-saving commercial espresso machine for smaller hospitality environments.',price:6396,priceLabel:'€6,396 · Including VAT'},
+{id:'aurelia',name:'Nuova Simonelli Aurelia Vol XT 2 Group',cat:'espresso',img:'assets/nuova aurelia Vol 2gp-b2b.jpg',fit:'Busy service',size:'Growing café / hospitality',note:'Commercial espresso workhorse for busy service and trained baristas.',price:7850,priceLabel:'€7,850 · Including VAT'},
+{id:'appiaxt',name:'Nuova Simonelli Appia Life XT 2 Group',cat:'espresso',img:'assets/APPIA LIFE XT - 2gp-b2b.jpg',fit:'Growing cafés',size:'Commercial espresso',note:'Commercial espresso platform for growing cafés and hospitality teams.',price:8200,priceLabel:'€8,200 · Including VAT'},
+{id:'sanremo',name:'Sanremo D8 2 Group',cat:'espresso',img:'assets/Sanremo D8 2gp-b2b.jpg',fit:'Cafés / hotels',size:'Commercial espresso',note:'Lead staffed-espresso option: a flexible modern platform for cafés, hotels and workplace coffee bars.',price:8548,priceLabel:'€8,548 · Including VAT'},
+{id:'ascaso',name:'Ascaso Barista T One 2 Group',cat:'espresso',img:'assets/Ascaso Barista T one 2 gp-b2b.jpg',fit:'Energy-conscious',size:'Specialty cafés',note:'Energy-conscious 2 Group espresso platform for specialty cafés.',price:8610,priceLabel:'€8,610 · Including VAT'},
+{id:'linea',name:'La Marzocco Linea Classic 2 Group',cat:'espresso',img:'assets/linea classic 2 group-b2b.jpg',fit:'Specialty',size:'Established cafés',note:'Recognisable commercial espresso platform for established specialty cafés.',price:14432,priceLabel:'€14,432 · Including VAT'},
+{id:'eagle',name:'Victoria Arduino Eagle One 2 Group',cat:'espresso',img:'assets/Eagle One 2gp-b2b.jpg',fit:'Sustainable specialty',size:'Premium espresso',note:'Contemporary premium espresso machine for sustainable specialty coffee bars.',price:15421,priceLabel:'€15,421 · Including VAT'},
+{id:'wave',name:'Nuova Simonelli Aurelia Wave T3 2 Group',cat:'espresso',img:'assets/AURELIA WAVE T3 2gp-b2b.jpg',fit:'Precision extraction',size:'Specialty espresso',note:'Precision-led specialty espresso platform for trained teams.',price:15650,priceLabel:'€15,650 · Including VAT'},
+{id:'lineapb',name:'La Marzocco Linea PB 2 Group',cat:'espresso',img:'assets/lineapbav2gp-b2b.jpg',fit:'Precision',size:'High-volume specialty',note:'High-volume commercial espresso platform for specialty environments.',price:18048,priceLabel:'€18,048 · Including VAT'},
+{id:'racer',name:'Sanremo Café Racer 2 Group',cat:'espresso',img:'assets/sanremo cafe racer 2gp-b2b.jpg',fit:'Flagship',size:'Premium espresso',note:'Flagship Sanremo espresso platform for premium venues and high-impact coffee bars.',price:19050,priceLabel:'€19,050 · Including VAT'},
+{id:'maverick',name:'Victoria Arduino Black Eagle Maverick 2 Group',cat:'espresso',img:'assets/Black Eagle Maverick 2gp-b2b.png',fit:'Competition-level cafés',size:'Premium espresso',note:'Flagship traditional espresso platform for competition-level and premium coffee service.',price:23189,priceLabel:'€23,189 · Including VAT'},
+{id:'my65',name:'Victoria Arduino Coffee Grinder — MY65',cat:'grinder',img:'assets/my65-b2b.jpg',fit:'Café espresso workflow',size:'Commercial grinder',note:'Victoria Arduino grinder range. Catalogue pricing starts from €1,750 including VAT.',price:1750,priceLabel:'From €1,750 · Including VAT'},
+{id:'f64',name:'Fiorenzato F64 Coffee Grinder',cat:'grinder',img:'assets/Fiorenzato_F64_EVO-b2b.webp',fit:'Growing cafés',size:'Commercial grinder',note:'Available as F64 EVO and F64 Grind by Weight with Easy Clean.',price:1551,priceLabel:'From €1,551 · Including VAT'},
+{id:'puq',name:'PUQpress M4 Automatic Coffee Tamper',cat:'grinder',img:'assets/PuqPress-M4-Black-Front-View-b2b.webp',fit:'Workflow accessory',size:'Espresso setups',note:'Automatic tamper for Fiorenzato-based professional espresso workflows.',price:975,priceLabel:'€975 · Including VAT'}
 ];
-const state={people:120,service:'automatic',priority:'Ease of use',route:'Buy',recommended:['legacy','cameo'],setup:{},compare:[]};
-const serviceLabel=()=>state.service==='automatic'?'Push-button / Super automatic':'Staffed / Traditional espresso';
-function recommendations(){let r;if(state.service==='automatic'){r=state.people<80?['legacy','cameo']:state.people<180?['cameo','legacy']:['e2ms','cameo'];if(state.priority==='High volume')r=state.people>=150?['e2ms','cameo']:['cameo','legacy'];if(state.priority==='Premium experience')r=['cameo','e2ms'];if(state.priority==='Compact footprint')r=['legacy','cameo'];}else{r=state.people<80?['appia','sanremo']:['eagle','maverick'];if(state.priority==='High volume')r=['maverick','eagle'];if(state.priority==='Premium experience')r=['maverick','eagle'];if(state.priority==='Compact footprint')r=['appia','sanremo'];}state.recommended=r;}
-function resultTitle(){if(state.service==='automatic')return state.people<80?'Compact automatic setup':state.people<180?'Medium-volume automatic setup':'High-volume automatic setup';return state.people<80?'Compact staffed espresso setup':'Commercial espresso-bar setup';}
-function resultCopy(){return state.service==='automatic'?'Prioritise reliable push-button service that matches the workplace volume without requiring trained baristas.':'Prioritise a commercial espresso platform, suitable grinder and support for a staffed coffee point.';}
-function card(m){const match=state.recommended.includes(m.id)?' match':'';const qty=state.setup[m.id]||0;return `<article class="product-card${match}" id="product-${m.id}" data-product-id="${m.id}" data-cat="${m.cat}"><span class="match-flag">Customer match</span><div class="product-img"><img src="${m.img}" alt="${m.name}"></div><div class="product-body"><span class="tag">${m.cat==='automatic'?'Super automatic':m.cat==='espresso'?'Traditional espresso':'Grinder / workflow'}</span><div class="product-title">${m.name}</div><div class="product-price">${m.priceLabel}</div><div class="specs"><span><strong>Best fit:</strong> ${m.fit}</span><span><strong>Scale:</strong> ${m.size}</span><span>${m.note}</span></div><div class="qty-control" aria-label="Quantity for ${m.name}"><button onclick="changeQty('${m.id}',-1)">−</button><input value="${qty}" readonly aria-label="Quantity"><button onclick="changeQty('${m.id}',1)">+</button></div><div class="product-actions"><button class="btn" onclick="addCompare('${m.id}')">Compare</button><button class="btn pink-btn" onclick="changeQty('${m.id}',1)">Add to setup</button></div></div></article>`}
-function renderCatalogue(filter=document.querySelector('.tab.active')?.dataset.filter||'all'){const root=document.getElementById('catalogueGroups');root.innerHTML='';['automatic','espresso','grinder'].forEach(cat=>{if(filter!=='all'&&filter!==cat)return;const list=machines.filter(m=>m.cat===cat);root.insertAdjacentHTML('beforeend',`<div class="group"><div class="group-head"><div class="eyebrow pink">${cat==='automatic'?'Super automatic':cat==='espresso'?'Traditional espresso':'Grinders'}</div><h3>${cat==='automatic'?'Push-button systems for easy workplace service':cat==='espresso'?'Traditional machines for staffed coffee service':'Complete the espresso setup'}</h3></div><div class="product-row">${list.map(card).join('')}</div></div>`)});}
-function renderCompare(){document.getElementById('compareSlots').innerHTML=[0,1,2].map(i=>{const m=machines.find(x=>x.id===state.compare[i]);return m?`<div class="compare-slot"><strong>${m.name}</strong><p>${m.fit}<br>${m.size}</p><button onclick="removeCompare('${m.id}')">Remove</button></div>`:`<div class="compare-slot"><strong>Comparison slot ${i+1}</strong><p>Add a machine from the catalogue.</p></div>`}).join('');document.getElementById('summaryCompared').textContent=state.compare.length?state.compare.map(id=>machines.find(m=>m.id===id).name).join(', '):'None yet';}
+const state={people:120,service:'automatic',priority:'Ease of use',route:'Buy',recommended:['jura-x3c','cameo'],setup:{},compare:[]};
+const serviceLabel=()=>state.service==='automatic'?'Push-button / Self-service':'Staffed / Traditional espresso';
+function recommendations(){let r;if(state.service==='automatic'){if(state.people<=20)r=['jura-w8','legacy'];else if(state.people<=50)r=['jura-x10','legacy'];else if(state.people<=100)r=['jura-x3c','cameo'];else r=['jura-x8c','e2ms'];if(state.priority==='High volume')r=state.people>100?['jura-x8c','e2ms']:state.people>50?['jura-x3c','e2ms']:['jura-x10','cameo'];if(state.priority==='Premium experience')r=['cameo',state.people>100?'e2ms':'jura-x10'];if(state.priority==='Compact footprint')r=state.people<=50?['jura-w8','legacy']:['legacy','cameo'];}else{r=state.people<80?['sanremo','appia']:['sanremo','aurelia'];if(state.priority==='High volume')r=['sanremo','maverick'];if(state.priority==='Premium experience')r=['sanremo','eagle'];if(state.priority==='Compact footprint')r=['sanremo','appia'];}state.recommended=r;}
+function resultTitle(){if(state.service==='automatic')return state.people<80?'Compact self-service setup':state.people<180?'Medium-volume self-service setup':'High-volume self-service setup';return state.people<80?'Compact staffed espresso setup':'Commercial espresso-bar setup';}
+function resultCopy(){return state.service==='automatic'?'Prioritise reliable self-service equipment that matches the workplace volume without requiring a staffed coffee bar.':'Prioritise a commercial espresso platform, suitable grinder and support for a staffed coffee point.';}
+function card(m){const match=state.recommended.includes(m.id)?' match':'';const qty=state.setup[m.id]||0;return `<article class="product-card${match}" id="product-${m.id}" data-product-id="${m.id}" data-cat="${m.cat}"><span class="match-flag">Customer match</span><div class="product-img"><img src="${m.img}" alt="${m.name}"></div><div class="product-body"><span class="tag">${m.cat==='bean'?'Office bean-to-cup':m.cat==='automatic'?'Super automatic':m.cat==='espresso'?'Traditional espresso':'Grinder / workflow'}</span><div class="product-title">${m.name}</div><div class="product-price">${m.priceLabel}</div><div class="specs"><span><strong>Best fit:</strong> ${m.fit}</span><span><strong>Scale:</strong> ${m.size}</span><span>${m.note}</span></div><div class="qty-control" aria-label="Quantity for ${m.name}"><button onclick="changeQty('${m.id}',-1)">−</button><input value="${qty}" readonly aria-label="Quantity"><button onclick="changeQty('${m.id}',1)">+</button></div><div class="product-actions"><button class="btn" onclick="addCompare('${m.id}')">Compare</button><button class="btn pink-btn" onclick="addToSetup('${m.id}')">Add to setup</button></div></div></article>`}
+function renderCatalogue(filter=document.querySelector('.tab.active')?.dataset.filter||'all'){const root=document.getElementById('catalogueGroups');root.innerHTML='';['bean','automatic','espresso','grinder'].forEach(cat=>{if(filter!=='all'&&filter!==cat)return;const list=machines.filter(m=>m.cat===cat);root.insertAdjacentHTML('beforeend',`<div class="group"><div class="group-head"><div class="eyebrow pink">${cat==='bean'?'Office bean-to-cup':cat==='automatic'?'Super automatic':cat==='espresso'?'Traditional espresso':'Grinders & workflow'}</div><h3>${cat==='bean'?'For workplaces that want reliable coffee without a trained barista.':cat==='automatic'?'Premium systems for offices, hotels, lounges and high-volume self-service environments.':cat==='espresso'?'Traditional machines for staffed coffee service':'Complete the espresso setup'}</h3></div><div class="product-row">${list.map(card).join('')}</div></div>`)});}
+function renderCompare(){
+  document.getElementById('compareSlots').innerHTML=[0,1,2].map(i=>{
+    const m=machines.find(x=>x.id===state.compare[i]);
+    return m
+      ? `<div class="compare-slot"><strong>${m.name}</strong><p>${m.fit}<br>${m.size}</p><button onclick="removeCompare('${m.id}')">Remove</button></div>`
+      : `<div class="compare-slot"><strong>Comparison slot ${i+1}</strong><p>Add a machine from the catalogue.</p></div>`;
+  }).join('');
+  const compared=document.getElementById('summaryCompared');
+  if(compared){
+    compared.textContent=state.compare.length
+      ? state.compare.map(id=>machines.find(m=>m.id===id).name).join(', ')
+      : 'None yet';
+  }
+}
 function renderState(){recommendations();document.getElementById('peopleNumber').textContent=state.people;document.getElementById('resultBadge').textContent=state.people+' people';document.getElementById('resultTitle').textContent=resultTitle();document.getElementById('resultCopy').textContent=resultCopy();document.getElementById('briefPills').innerHTML=`<span>${serviceLabel()}</span><span>${state.priority}</span><span>${state.route}</span>`;document.getElementById('recommendations').innerHTML=state.recommended.map(id=>{const m=machines.find(x=>x.id===id);return `<button class="mini-rec" type="button" onclick="goToMachine('${m.id}')"><strong>${m.name}</strong><span>${m.fit}</span><span class="rec-link">View this machine →</span></button>`}).join('');
-document.getElementById('summaryPeople').textContent=state.people+' people';document.getElementById('summaryService').textContent=serviceLabel();document.getElementById('summaryPriority').textContent=state.priority;document.getElementById('summaryRoute').textContent=state.route;
+
 document.getElementById('proposalPeople').textContent=state.people+' people';document.getElementById('proposalService').textContent=serviceLabel();document.getElementById('proposalPriority').textContent=state.priority;document.getElementById('proposalRoute').textContent=state.route;const ids=Object.keys(state.setup).filter(id=>state.setup[id]>0);const primary=machines.find(m=>m.id===ids[0]);const totalUnits=ids.reduce((n,id)=>n+state.setup[id],0);document.getElementById('proposalMachine').textContent=totalUnits?`${totalUnits} item${totalUnits===1?'':'s'} across ${ids.length} product${ids.length===1?'':'s'}`:'Build the equipment setup above';document.getElementById('proposalWhy').textContent=totalUnits?`A mixed equipment configuration built for a ${state.people}-person workplace, prioritising ${state.priority.toLowerCase()} with a ${state.route.toLowerCase()} commercial route.`:'Configure the customer and add one or more machines to build the recommendation.';document.getElementById('proposalImage').src=primary?primary.img:'assets/hero-b2b.png';renderSetup();document.querySelectorAll('[data-route-card]').forEach(c=>c.classList.toggle('selected',c.dataset.routeCard===state.route));renderCatalogue();}
 document.getElementById('people').addEventListener('input',e=>{state.people=+e.target.value;renderState()});document.querySelectorAll('[data-choice]').forEach(b=>b.addEventListener('click',()=>{const type=b.dataset.choice;document.querySelectorAll(`[data-choice="${type}"]`).forEach(x=>x.classList.remove('active'));b.classList.add('active');state[type]=b.dataset.value;renderState()}));
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderCatalogue(b.dataset.filter)}));
-document.querySelectorAll('[data-route-choice]').forEach(b=>b.addEventListener('click',()=>{state.route=b.dataset.routeChoice;document.querySelectorAll('[data-choice="route"]').forEach(x=>x.classList.toggle('active',x.dataset.value===state.route));renderState();document.getElementById('setup').scrollIntoView({behavior:'smooth'})}));
+document.querySelectorAll('[data-route-choice]').forEach(b=>b.addEventListener('click',()=>{state.route=b.dataset.routeChoice;document.querySelectorAll('[data-choice="route"]').forEach(x=>x.classList.toggle('active',x.dataset.value===state.route));renderState();document.getElementById('proposal').scrollIntoView({behavior:'smooth'})}));
 function setCatalogueFilter(filter){
   document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.filter===filter));
   renderCatalogue(filter);
@@ -174,7 +326,8 @@ function goToMachine(id){
 function viewMatchingMachines(){
   const first=machines.find(x=>x.id===state.recommended[0]);
   if(!first)return;
-  setCatalogueFilter(first.cat);
+  const cats=[...new Set(state.recommended.map(id=>machines.find(x=>x.id===id)?.cat).filter(Boolean))];
+  setCatalogueFilter(cats.length===1?cats[0]:'all');
   document.getElementById('catalogue').scrollIntoView({behavior:'smooth',block:'start'});
   setTimeout(()=>{
     state.recommended.forEach((id,i)=>{
@@ -189,14 +342,87 @@ function viewMatchingMachines(){
   },450);
 }
 function addCompare(id){if(state.compare.includes(id))return;if(state.compare.length>=3)state.compare.shift();state.compare.push(id);renderCompare();document.getElementById('compare').scrollIntoView({behavior:'smooth'})}function removeCompare(id){state.compare=state.compare.filter(x=>x!==id);renderCompare()}
-function changeQty(id,delta){state.setup[id]=Math.max(0,(state.setup[id]||0)+delta);if(state.setup[id]===0)delete state.setup[id];renderState();}
-function renderSetup(){const ids=Object.keys(state.setup).filter(id=>state.setup[id]>0);const markup=ids.length?ids.map(id=>{const m=machines.find(x=>x.id===id),q=state.setup[id];return `<div class="setup-item"><div><strong>${q} × ${m.name}</strong><small>${m.priceLabel}</small></div><div class="setup-item-actions"><button onclick="changeQty('${id}',-1)">−</button><strong>${q}</strong><button onclick="changeQty('${id}',1)">+</button><button onclick="removeSetup('${id}')">Remove</button></div></div>`}).join(''):`<div class="setup-item"><span>No equipment selected yet.</span></div>`;document.getElementById('setupList').innerHTML=markup;document.getElementById('proposalSetupList').innerHTML=markup;const total=ids.reduce((sum,id)=>{const m=machines.find(x=>x.id===id);return sum+(m.price||0)*state.setup[id]},0);const formatted='€'+total.toLocaleString('en-IE');document.getElementById('setupTotal').textContent=formatted;document.getElementById('proposalTotal').textContent=formatted;}
+let setupToastTimer;
+function showSetupToast(message,detail=''){
+  const toast=document.getElementById('setupToast');
+  if(!toast)return;
+  toast.innerHTML=`<strong>${message}</strong>${detail?`<span>${detail}</span>`:''}`;
+  toast.classList.add('show');
+  clearTimeout(setupToastTimer);
+  setupToastTimer=setTimeout(()=>toast.classList.remove('show'),2600);
+}
+function setupUnitCount(){
+  return Object.values(state.setup).reduce((sum,q)=>sum+q,0);
+}
+function changeQty(id,delta){
+  state.setup[id]=Math.max(0,(state.setup[id]||0)+delta);
+  if(state.setup[id]===0)delete state.setup[id];
+  renderState();
+}
+function addToSetup(id){
+  const m=machines.find(x=>x.id===id);
+  if(!m)return;
+  state.setup[id]=(state.setup[id]||0)+1;
+  renderState();
+  const qty=state.setup[id];
+  const total=setupUnitCount();
+  showSetupToast(
+    `✓ ${m.name} added to setup`,
+    `${qty} × this item · ${total} total item${total===1?'':'s'} in the setup`
+  );
+}
+function renderSetup(){
+  const ids=Object.keys(state.setup).filter(id=>state.setup[id]>0);
+  const markup=ids.length
+    ? ids.map(id=>{
+        const m=machines.find(x=>x.id===id),q=state.setup[id];
+        return `<div class="setup-item">
+          <div><strong>${q} × ${m.name}</strong><small>${m.priceLabel}</small></div>
+          <div class="setup-item-actions">
+            <button onclick="changeQty('${id}',-1)" aria-label="Decrease ${m.name} quantity">−</button>
+            <strong>${q}</strong>
+            <button onclick="changeQty('${id}',1)" aria-label="Increase ${m.name} quantity">+</button>
+            <button onclick="removeSetup('${id}')">Remove</button>
+          </div>
+        </div>`;
+      }).join('')
+    : `<div class="setup-item"><span>No equipment selected yet.</span></div>`;
+
+  const setupList=document.getElementById('setupList');
+  const proposalList=document.getElementById('proposalSetupList');
+  if(setupList)setupList.innerHTML=markup;
+  if(proposalList)proposalList.innerHTML=markup;
+
+  const total=ids.reduce((sum,id)=>{
+    const m=machines.find(x=>x.id===id);
+    return sum+(m.price||0)*state.setup[id];
+  },0);
+  const formatted='€'+total.toLocaleString('en-IE');
+
+  const setupTotal=document.getElementById('setupTotal');
+  const proposalTotal=document.getElementById('proposalTotal');
+  if(setupTotal)setupTotal.textContent=formatted;
+  if(proposalTotal)proposalTotal.textContent=formatted;
+}
 function removeSetup(id){delete state.setup[id];renderState();}
-function setupText(){const ids=Object.keys(state.setup).filter(id=>state.setup[id]>0);const equipment=ids.length?ids.map(id=>{const m=machines.find(x=>x.id===id);return `${state.setup[id]} × ${m.name} — ${m.priceLabel}`}).join('\n'):'No equipment selected';return `The Fruit People — Customer Machine Setup\nWorkplace: ${state.people} people\nService: ${serviceLabel()}\nPriority: ${state.priority}\nCommercial route: ${state.route}\nEquipment:\n${equipment}\nCompared: ${state.compare.length?state.compare.map(id=>machines.find(x=>x.id===id).name).join(', '):'None'}`;}
-function copySetup(){navigator.clipboard?.writeText(setupText()).then(()=>alert('Customer setup copied.'))}
-function copyProposal(){const customer=document.getElementById('customerName').value||'your workplace';const txt=`Coffee Machine Recommendation — ${customer}\n\n${setupText()}\n\nPresented by The Fruit People × Moyee.\nFinal specification, availability, pricing and commercial terms to be confirmed.`;navigator.clipboard?.writeText(txt).then(()=>alert('Proposal summary copied.'))}
-function sendToMoyee(){const customer=document.getElementById('customerName').value.trim(),person=document.getElementById('salesperson').value.trim(),notes=document.getElementById('notes').value.trim();document.getElementById('proposalCustomer').textContent=customer?`Prepared for ${customer}`:'Prepared for your workplace';const handoff=`THE FRUIT PEOPLE PARTNER HANDOFF\nCustomer: ${customer||'[not entered]'}\nTFP contact: ${person||'[not entered]'}\n${setupText()}\nNotes: ${notes||'None'}`;navigator.clipboard?.writeText(handoff).then(()=>alert('Prototype: handoff copied to clipboard. Nothing has been sent externally.'))}
-document.getElementById('customerName').addEventListener('input',e=>document.getElementById('proposalCustomer').textContent=e.target.value?`Prepared for ${e.target.value}`:'Prepared for your workplace');
+function setupText(){const ids=Object.keys(state.setup).filter(id=>state.setup[id]>0);const equipment=ids.length?ids.map(id=>{const m=machines.find(x=>x.id===id);return `${state.setup[id]} × ${m.name} — ${m.priceLabel}`}).join('\n'):'No equipment selected';return `The Fruit People — Internal Client Machine Setup\nWorkplace: ${state.people} people\nService: ${serviceLabel()}\nPriority: ${state.priority}\nCommercial route: ${state.route}\nEquipment:\n${equipment}\nCompared: ${state.compare.length?state.compare.map(id=>machines.find(x=>x.id===id).name).join(', '):'None'}`;}
+function copyProposal(){
+  const customer=document.getElementById('customerName')?.value.trim()||'Unnamed client';
+  const txt=`THE FRUIT PEOPLE — INTERNAL CLIENT SETUP
+Client / opportunity: ${customer}
+
+${setupText()}
+
+Internal working recommendation only.
+Final specification, availability, pricing and commercial terms to be confirmed.`;
+  navigator.clipboard?.writeText(txt).then(()=>showSetupToast('✓ Internal proposal copied',`${customer} setup copied to clipboard.`));
+}
+const customerNameInput=document.getElementById('customerName');
+if(customerNameInput){
+  customerNameInput.addEventListener('input',e=>{
+    document.getElementById('proposalCustomer').textContent=e.target.value?`${e.target.value} — Setup`:'Unnamed client — Setup';
+  });
+}
 
 /* Interactive hero image: gentle zoom + cursor-following 3D tilt. */
 const heroVisual=document.querySelector('.hero-visual');
